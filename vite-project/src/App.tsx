@@ -1,26 +1,30 @@
 import './App.css'
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import About from './pages/about';
 import Homepage from './pages/homepage';
-import Cards from './pages/cards';
 import NotFound from './pages/notFound';
+import Counter from './pages/counter';
 
 function App() {
 
   return (
     <div className='App'>
-      <div className='header'>
-        <Link to="/">Home</Link>
-        <Link to="/cards">Cards</Link>
-        <Link to="/about">About</Link>
-      </div>
+      <header className='header'>
+        <h1> ReactAPP </h1>
+        <NavLink className='navigation' to="/">Home</NavLink>
+        <NavLink className='navigation' to="/about">About</NavLink>
+        <NavLink className='navigation' to="/counter">Counter</NavLink>
+      </header>
       
-      <Routes>
-         <Route path="/" element={<Homepage />} />
-         <Route path="/cards" element={<Cards />} />
-         <Route path="/about" element={<About />} />
-         <Route path="*" element={<NotFound />} />
-      </Routes>
+      <body>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </body>
+      
     </div>
   );
 }

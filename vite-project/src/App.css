@@ -1,6 +1,25 @@
 #root {
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+.navigation {
+  position: relative;
+}
+
+.navigation.active {
+  font-weight: 600;
+}
+
+.navigation.active::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 2px;
+  background-color: #646cff8e;
 }
