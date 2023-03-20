@@ -10,7 +10,6 @@ function App() {
   return (
     <div className='App'>
       <header className='header'>
-        <h1> ReactAPP </h1>
         <NavLink className='navigation' to="/">Home</NavLink>
         <NavLink className='navigation' to="/about">About</NavLink>
         <NavLink className='navigation' to="/counter">Counter</NavLink>
@@ -25,6 +24,9 @@ function App() {
         </Routes>
       </body>
       
+      <footer> 
+        <p> ReactAPP </p> 
+      </footer>
     </div>
   );
 }
