@@ -4,6 +4,7 @@ import About from './pages/about';
 import Homepage from './pages/homepage';
 import NotFound from './pages/notFound';
 import Counter from './pages/counter';
+import Form from './components/Form';
 
 function App() {
 
@@ -13,16 +14,18 @@ function App() {
         <NavLink className='navigation' to="/">Home</NavLink>
         <NavLink className='navigation' to="/about">About</NavLink>
         <NavLink className='navigation' to="/counter">Counter</NavLink>
+        <NavLink className='navigation' to="/form">Form</NavLink>
       </header>
       
-      <body>
+      <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/counter" element={<Counter />} />
+          <Route path="/form" element={<Form />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </body>
+      </main>
       
       <footer> 
         <p> ReactAPP </p> 

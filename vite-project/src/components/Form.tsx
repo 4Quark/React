@@ -21,18 +21,19 @@ class Form extends React.Component<formProps, formState> {
 
     handleForm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
+        console.log('hi');
     }
 
     render() {
         return (
             <div className='form_content'>
                 <form>
-                    <input type='text'>name, surname</input>
-                    <input type='date'>birthday</input>
-                    <input type='select'>countries</input>
-                    <input type='checkbox'>"I consent to my personal data"</input>
-                    <input type='switcher'>male/female</input>
-                    <input type='file'>profile picture</input>
+                    <input type='text'></input>
+                    <input type='date'></input>
+                    <input type='select'></input>
+                    <input type='checkbox'></input>
+                    <input type='switcher'></input>
+                    <input type='file'></input>
                     <button onClick={ this.handleForm }>Submit </button>
                 </form>
             </div>

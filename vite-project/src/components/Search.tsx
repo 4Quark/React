@@ -33,7 +33,7 @@ class ClassCounter extends React.Component<SearchProps, SearchState> {
     render() {
         return (
             <div className='search_field'>
-                <input type="text" value={this.state.value} onChange={this.changeInput} />
+                <input className='searchInput' type="text" value={this.state.value} onChange={this.changeInput} />
                 <button className='search_btn' onClick={this.submitInput} >Search</button>
             </div>
         )

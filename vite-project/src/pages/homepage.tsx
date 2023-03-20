@@ -14,7 +14,7 @@ const Homepage = () => {
             <h1>RS School React</h1>
             <Search/>
             <div className='cards_container'>
-                {cards.map(card => <Card post={card} />)}
+                {cards.map(card => <Card post={card} key={card.id} />)}
             </div>
         </div>
     );
