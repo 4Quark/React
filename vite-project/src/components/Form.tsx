@@ -5,23 +5,41 @@ type formProps = {};
 type formState = {};
 
 class Form extends React.Component<formProps, formState> {
+    nameInput: React.RefObject<HTMLInputElement>;
+    dateInput: React.RefObject<HTMLInputElement>;
+    selectInput: React.RefObject<HTMLSelectElement>;
+    checkboxInput: React.RefObject<HTMLInputElement>;
+    switcherInputM: React.RefObject<HTMLInputElement>;
+    switcherInputF: React.RefObject<HTMLInputElement>;
+    fileInput: React.RefObject<HTMLInputElement>;
 
     constructor(props: formProps) {
         super(props);
-        this.state = {
-            text: '',
-            data: '',
-            select: '',
-            checkbox: '',
-            switcher: '',
-            file: ''
-        }
+        this.nameInput = React.createRef();
+        this.dateInput = React.createRef();
+        this.selectInput = React.createRef();
+        this.checkboxInput = React.createRef();
+        this.switcherInputM = React.createRef();
+        this.switcherInputF = React.createRef();
+        this.fileInput = React.createRef();
         this.handleForm = this.handleForm.bind(this);
     }
 
     handleForm = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('hi');
+        
+        if (this.nameInput.current) console.log(`A name was submitted: ${this.nameInput.current?.value}`);
+        if (this.dateInput.current) console.log(`Birthday data: ${this.dateInput.current?.value}`);
+        if (this.selectInput.current) console.log(`Country - ${this.selectInput.current.value}`);
+        if (this.switcherInputM.current || this.switcherInputF.current) {
+            const gender = (this.switcherInputM.current?.checked) ? 'male' : 'female';
+            console.log(`Gender: ${gender}`);
+        }
+        if (this.fileInput.current) {
+            if (this.fileInput.current.files) console.log(`Selected file - ${this.fileInput.current.files[0]?.name}`); // HERE 
+        }
+        if (this.checkboxInput.current) console.log(`Consent to my personal data: ${this.checkboxInput.current.checked}`);
     }
 
     render() {
@@ -30,24 +48,20 @@ class Form extends React.Component<formProps, formState> {
                 <fieldset className="form_fieldset">
                     <legend>User info</legend>
                     <form onSubmit={ this.handleForm }>
-                        <p></p>
-                        
                         <label>
                             Name:
-                            <input type="text" name="name" />
+                            <input type="text" name="name" ref={this.nameInput} />
                         </label>
 
-                        <p></p>
-
+                        <br />
                         <label>
                             Birthday:
-                            <input type="date" name="date" />
+                            <input type="date" name="date" ref={this.dateInput} />
                         </label>
 
-                        <p></p>
-                        
+                        <br />
                         <span>Country</span>
-                        <select>
+                        <select ref={this.selectInput}>
                             <option value="Belarus">Belarus</option>
                             <option value="Kazakhstan">Kazakhstan</option>
                             <option value="Kyrgyzstan">Kyrgyzstan</option>
@@ -56,28 +70,29 @@ class Form extends React.Component<formProps, formState> {
                             <option value="Uzbekistan">Uzbekistan</option>
                         </select>
 
-                        
-                        <p></p>
+                        <br />
                         <span>Gender</span>
                         <label>
-                            <input type='radio' name="sex"></input>
+                            <input type='radio' name="sex" value='male' ref={this.switcherInputM} />
                             male
                         </label>
                         <label>
-                            <input type='radio' name="sex"></input>
+                            <input type='radio' name="sex" value='female' ref={this.switcherInputF} />
                             female
                         </label>
 
-                        <p></p>
-                        <span>profile picture</span>
-                        <input type='file'></input>
+                        <br />
+                        <label>
+                            Upload profile picture:
+                            <input type="file" ref={this.fileInput} />
+                        </label>
 
-                        <p></p>
-                        <input type='checkbox'></input>
+                        <br />
+                        <input type='checkbox' ref={this.checkboxInput} />
                         <span>I consent to my personal data</span>
 
 
-                        <p></p>
+                        <br />
                         <input type="submit" value="Submit" />
                     </form>
                 </fieldset>
