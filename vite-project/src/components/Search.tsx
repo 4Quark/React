@@ -22,7 +22,10 @@ class ClassCounter extends React.Component<SearchProps, SearchState> {
     
     changeInput(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({value: event.target.value});
-        localStorage.setItem('inputText', event.target.value);
+    }
+
+    componentWillUnmount() {
+        localStorage.setItem('inputText', this.state.value);
     }
     
     submitInput() {
