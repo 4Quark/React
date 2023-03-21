@@ -11,7 +11,6 @@ class Card extends React.Component<postProps, postState> {
     }
 
     render() {
-        //  "discountPercentage": 12.96,
         return (
             <div className='card_content'>
                 <div className='card_main_content'>
