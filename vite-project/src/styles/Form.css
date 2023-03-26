@@ -1,0 +1,23 @@
+.form_cards_content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form_card_content {
+    background-color: beige;
+    margin: 10px;
+    padding: 5px;
+}
+
+.image_container {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.personalIMG {
+    height: 100%;
+    min-width: 100px;
+    min-height: 100px;
+}
