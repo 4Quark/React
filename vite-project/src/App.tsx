@@ -4,7 +4,7 @@ import About from './pages/about';
 import Homepage from './pages/homepage';
 import NotFound from './pages/notFound';
 import Counter from './pages/counter';
-import Form from './components/Form';
+import FormPage from './pages/form';
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/counter" element={<Counter />} />
-          <Route path="/form" element={<Form />} />
+          <Route path="/form" element={<FormPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
