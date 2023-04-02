@@ -34,7 +34,6 @@ const MyForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isValid },
     reset,
   } = useForm<Inputs>({ mode: 'onBlur' });
