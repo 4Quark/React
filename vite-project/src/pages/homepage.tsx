@@ -6,7 +6,7 @@ import data from '../data/data.json';
 const Homepage = () => {
   const cards = [];
   for (let i = 0; i < 30; i++) {
-    cards.push(data.products[i]);
+    if (data.products[i]) cards.push(data.products[i]);
   }
 
   return (

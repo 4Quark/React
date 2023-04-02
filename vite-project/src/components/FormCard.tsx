@@ -7,8 +7,10 @@ type cardProps = {
   name: string;
   date: string;
   select: string;
-  switcher: string;
+  switcher: boolean;
+  email: string;
   skills: string;
+  mobile: string;
   file: string;
   checkbox: boolean;
 };
@@ -27,6 +29,8 @@ class FormCard extends React.Component<cardProps, cardState> {
           <p> Birthday: {this.props.date}</p>
           <p> Country: {this.props.select}</p>
           <p> Gender: {this.props.switcher}</p>
+          <p> email: {this.props.email}</p>
+          <p> mobile: {this.props.mobile}</p>
           <p> Skills: {this.props.skills}</p>
           <div className="image_container">
             <img className="personalIMG" src={this.props.file} />

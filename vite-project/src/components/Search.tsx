@@ -1,52 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import { useHistory } from 'react-router-dom';
 import '../styles/Search.css';
 
-type SearchProps = Record<string, never>;
-type SearchState = { value: string };
+const Search = () => {
+  const [value, setValue] = useState('');
 
-class ClassCounter extends React.Component<SearchProps, SearchState> {
-  constructor(props: SearchProps) {
-    super(props);
-    this.state = {
-      value: '',
-    };
-    this.changeInput = this.changeInput.bind(this);
-    this.submitInput = this.submitInput.bind(this);
-  }
+  useEffect(() => {
+    const valueFromStorage = localStorage.getItem('value');
+    if (valueFromStorage) setValue(valueFromStorage);
+  }, []);
 
-  componentDidMount() {
-    const inputValue = localStorage.getItem('inputText');
-    if (inputValue) this.setState({ value: inputValue });
-  }
+  useEffect(() => {
+    localStorage.setItem('value', value);
+  }, [value]);
 
-  changeInput(event: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ value: event.target.value });
-  }
+  const submitInput: React.MouseEventHandler<HTMLButtonElement> = () => {
+    setValue('');
+    alert('Text in input: " ' + value + ' "');
+  };
 
-  componentWillUnmount() {
-    localStorage.setItem('inputText', this.state.value);
-  }
+  return (
+    <div className="search_field">
+      <input
+        className="searchInput"
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <button className="search_btn" onClick={submitInput}>
+        Search
+      </button>
+    </div>
+  );
+};
 
-  submitInput() {
-    localStorage.setItem('inputText', this.state.value);
-    alert('Text in input: ' + this.state.value);
-  }
+export default Search;
 
-  render() {
-    return (
-      <div className="search_field">
-        <input
-          className="searchInput"
-          type="text"
-          value={this.state.value}
-          onChange={this.changeInput}
-        />
-        <button className="search_btn" onClick={this.submitInput}>
-          Search
-        </button>
-      </div>
-    );
-  }
-}
+// componentDidMount() {
+//   const inputValue = localStorage.getItem('inputText');
+//   if (inputValue) this.setState({ value: inputValue });
+// }
 
-export default ClassCounter;
+// componentWillUnmount() {
+//   localStorage.setItem('inputText', this.state.value);
+// }
