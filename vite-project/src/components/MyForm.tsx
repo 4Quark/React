@@ -52,6 +52,7 @@ const MyForm = () => {
       file: data.file ? URL.createObjectURL(data.file[0] as Blob) : '',
     };
     setCards([...cards, newCard]);
+    alert('new card created!');
     reset();
   };
 
