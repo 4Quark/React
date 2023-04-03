@@ -26,7 +26,7 @@ type Inputs = {
   userGender: boolean;
   userSkills: string;
   checkbox: boolean;
-  file: string;
+  file: FileList;
 };
 
 const MyForm = () => {
@@ -49,7 +49,7 @@ const MyForm = () => {
       gender: data.userGender,
       skills: data.userSkills,
       checkbox: data.checkbox,
-      file: data.file[0],
+      file: data.file ? URL.createObjectURL(data.file[0] as Blob) : '',
     };
     setCards([...cards, newCard]);
     reset();
