@@ -29,7 +29,7 @@ const SearchResult = () => {
       {cards.map((card) => (
         <Card post={card} key={card.id} />
       ))}
-{/* 
+      {/* 
       {cards.length !== 0 ? (
         cards?.map((card, i) => (
           <FormCard
