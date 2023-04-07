@@ -1,0 +1,62 @@
+.modal_container {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(41, 41, 41, 0.6);
+}
+
+.modal_window {
+  position: relative;
+  margin-top: 10px;
+  padding: 24px;
+  width: 100%;
+  background-color: #ffffff;
+  background-image: url('img/lego-purchase.jpg');
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: 85% 70%;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+
+.modal_wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: auto;
+  padding: 0;
+  padding-bottom: 24px;
+  width: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.close {
+  cursor: pointer;
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  color: orange;
+}
+
+.close:hover {
+    color: rgb(148, 102, 22);
+}
+
+.modal_info {
+    text-align: left;
+    display: flex;
+    gap: 20px;
+}
+
+.modal_picture {}
+
+.modal_img {
+    width: 200px;
+}

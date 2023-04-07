@@ -10,6 +10,7 @@ type searchCardProps = {
   gender: string;
   episode: string[];
   image: string;
+  openModal: (id: number) => void;
 };
 type cardState = Record<string, never>;
 
@@ -22,7 +23,7 @@ class FormCard extends React.Component<searchCardProps, cardState> {
     return (
       <div className="card_content">
         <div className="card_main_content">
-          <div className="card_picture">
+          <div className="card_picture" onClick={() => this.props.openModal(this.props.id)}>
             <img className="card_img" src={this.props.image} />
           </div>
           <div className="card_info">
@@ -38,7 +39,9 @@ class FormCard extends React.Component<searchCardProps, cardState> {
         </div>
         <div className="card_additional_content">
           <span className="price"> Status: {this.props.status} </span>
-          <button className="card_btn">More</button>
+          <button className="card_btn" onClick={() => this.props.openModal(this.props.id)}>
+            More
+          </button>
         </div>
       </div>
     );
