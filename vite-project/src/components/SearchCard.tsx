@@ -21,9 +21,9 @@ class FormCard extends React.Component<searchCardProps, cardState> {
 
   render() {
     return (
-      <div className="card_content">
+      <div className="card_content" onClick={() => this.props.openModal(this.props.id)}>
         <div className="card_main_content">
-          <div className="card_picture" onClick={() => this.props.openModal(this.props.id)}>
+          <div className="card_picture">
             <img className="card_img" src={this.props.image} />
           </div>
           <div className="card_info">
@@ -39,9 +39,7 @@ class FormCard extends React.Component<searchCardProps, cardState> {
         </div>
         <div className="card_additional_content">
           <span className="price"> Status: {this.props.status} </span>
-          <button className="card_btn" onClick={() => this.props.openModal(this.props.id)}>
-            More
-          </button>
+          <button className="card_btn">More</button>
         </div>
       </div>
     );

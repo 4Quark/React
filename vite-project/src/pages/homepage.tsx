@@ -35,16 +35,6 @@ interface IResult {
   results: ICharacter[];
 }
 
-// interface IResultEpisode {
-//   info: {
-//     count: number;
-//     pages: number;
-//     next: string | null;
-//     prev: string | null;
-//   };
-//   results: IEpisode[];
-// }
-
 interface IEpisode {
   id: number;
   name: string;
@@ -116,7 +106,6 @@ const Homepage = () => {
         setModalEpisodes(episodesArr.join(', '));
       }
     });
-    // return episodesArr.join(', ');
   };
 
   return (
@@ -160,7 +149,10 @@ const Homepage = () => {
         )}
       </div>
       {isModal ? (
-        <div className="modal_container" onClick={() => setIsModal(false)}>
+        <div
+          className="modal_container"
+          onClick={(e) => e.currentTarget === e.target && setIsModal(false)}
+        >
           <div className="modal_wrapper">
             <div className="modal_window">
               <div className="close" onClick={() => setIsModal(false)}>
@@ -203,12 +195,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-
-// interface ICharacter {
-//   origin: {
-//     url: string;
-//   };
-//   location: {
-//     url: string;
-//   };
-// }
