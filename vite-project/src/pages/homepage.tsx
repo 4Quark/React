@@ -35,7 +35,6 @@ const Homepage = () => {
   };
 
   const search = (results: ICharacter[]) => {
-    console.log('work' + results);
     setResults(results);
   };
 
@@ -87,15 +86,6 @@ const Homepage = () => {
           closeModal={closeModal}
         />
       )}
-      {/* {isModal ? (
-        <Modal
-          modalCharacter={modalCharacter}
-          modalEpisodes={modalEpisodes}
-          closeModal={closeModal}
-        />
-      ) : (
-        <div></div>
-      )} */}
     </div>
   );
 };
