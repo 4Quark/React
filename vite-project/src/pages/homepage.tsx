@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import SearchCard from '../components/SearchCard';
 import '../styles/Modal.css';
@@ -71,12 +71,14 @@ const Homepage = () => {
         `https://rickandmortyapi.com/api/character/?name=${searchValue}`
       );
       setResults(response.data.results);
-    } catch (err: unknown) {
-      console.error(err);
-      setResults([]);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          setResults([]);
+        } else console.error(error);
+      }
     } finally {
       setIsLoading(false);
-      console.log(results);
     }
   };
 
@@ -89,19 +91,19 @@ const Homepage = () => {
     setIsModal(true);
     const character = results.filter((i) => i.id === id);
     setModalCharacter(character[0]);
-    getEpisodes(id);
+    getEpisodes(character[0]);
   };
 
-  const getEpisodes = (id: number) => {
+  const getEpisodes = (character: ICharacter) => {
     const episodesArr: string[] = [];
-    results[id].episode.forEach(async (episode) => {
+    character.episode.forEach(async (episode) => {
       try {
         const response: AxiosResponse<IEpisode> = await axios.get(episode);
         const episodeInfo: string = response.data.episode + ' ' + response.data.name;
         episodesArr.push(episodeInfo);
-        console.log(episodeInfo);
-      } catch (err: unknown) {
-        console.error(err);
+      } catch (e) {
+        const error = e as AxiosError;
+        console.log(error.status);
       } finally {
         setModalEpisodes(episodesArr.join(', '));
       }
@@ -145,7 +147,7 @@ const Homepage = () => {
             />
           ))
         ) : (
-          <h2>Nothing found </h2>
+          <h2>There is nothing here</h2>
         )}
       </div>
       {isModal ? (

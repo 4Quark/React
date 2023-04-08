@@ -16,10 +16,6 @@
   padding: 24px;
   width: 100%;
   color: #213547;
-  background-image: url('img/lego-purchase.jpg');
-  background-size: 30%;
-  background-repeat: no-repeat;
-  background-position: 85% 70%;
   border: 2px solid orange;
   border-radius: 10px;
 }
