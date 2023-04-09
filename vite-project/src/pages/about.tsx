@@ -3,7 +3,7 @@ import React from 'react';
 const About = () => {
   return (
     <div className="about_container">
-      <h1>About us</h1>
+      <h2>About us</h2>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
         been the industry standard dummy text ever since the 1500s, when an unknown printer took a

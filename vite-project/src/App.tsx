@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
+        <h1 className="logo">ReactAPP</h1>
         <NavLink className="navigation" to="/">
           Home
         </NavLink>

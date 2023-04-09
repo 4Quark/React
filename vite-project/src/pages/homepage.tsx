@@ -56,7 +56,7 @@ const Homepage = () => {
 
   return (
     <div className="home_container">
-      <h1>RS School React</h1>
+      <h2>RS School React</h2>
       <Search search={search} />
 
       <div className="cards_container">

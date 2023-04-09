@@ -4,7 +4,7 @@ import ClassCounter from '../components/ClassCounter';
 const Cards = () => {
   return (
     <div className="counter_container">
-      <h1>Counter</h1>
+      <h2>Counter</h2>
       <ClassCounter />
     </div>
   );
