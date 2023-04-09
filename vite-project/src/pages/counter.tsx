@@ -1,7 +1,7 @@
 import React from 'react';
 import ClassCounter from '../components/ClassCounter';
 
-const Cards = () => {
+const Counter = () => {
   return (
     <div className="counter_container">
       <h2>Counter</h2>
@@ -10,4 +10,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default Counter;
