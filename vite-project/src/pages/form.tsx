@@ -4,7 +4,7 @@ import MyForm from '../components/MyForm';
 const FormPage = () => {
   return (
     <div className="form_container">
-      <h1>Form</h1>
+      <h2>Form</h2>
       <MyForm />
     </div>
   );

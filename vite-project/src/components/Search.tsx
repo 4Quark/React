@@ -1,46 +1,65 @@
-import React, { useState, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+import axios, { AxiosResponse } from 'axios';
+import React, { useState, useEffect, ChangeEvent } from 'react';
+import { ICharacter, IResult } from '../servises/types';
 import '../styles/Search.css';
 
-const Search = () => {
-  const [value, setValue] = useState('');
+type SearchProps = {
+  search: (results: ICharacter[]) => void;
+};
+
+const Search = ({ search }: SearchProps) => {
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const valueFromStorage = localStorage.getItem('value');
-    if (valueFromStorage) setValue(valueFromStorage);
+    if (valueFromStorage) setSearchValue(valueFromStorage);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('value', value);
-  }, [value]);
+    localStorage.setItem('value', searchValue);
+  }, [searchValue]);
 
-  const submitInput: React.MouseEventHandler<HTMLButtonElement> = () => {
-    setValue('');
-    alert('Text in input: " ' + value + ' "');
+  const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const response: AxiosResponse<IResult> = await axios.get(
+        `https://rickandmortyapi.com/api/character/?name=${searchValue}`
+      );
+      search(response.data.results);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          search([]);
+        } else console.error(error);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchValue(value);
   };
 
   return (
-    <div className="search_field">
-      <input
-        className="searchInput"
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <button className="search_btn" onClick={submitInput}>
-        Search
+    <form className="search_field" onSubmit={handleSubmit}>
+      <label htmlFor="search">
+        <input
+          id="search"
+          type="text"
+          value={searchValue}
+          onChange={handleChange}
+          className="searchInput"
+        />
+      </label>
+      <button className="search_btn" type="submit" disabled={isLoading}>
+        {isLoading ? 'Loading...' : 'Search'}
       </button>
-    </div>
+    </form>
   );
 };
 
 export default Search;
-
-// componentDidMount() {
-//   const inputValue = localStorage.getItem('inputText');
-//   if (inputValue) this.setState({ value: inputValue });
-// }
-
-// componentWillUnmount() {
-//   localStorage.setItem('inputText', this.state.value);
-// }

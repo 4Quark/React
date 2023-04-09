@@ -17,6 +17,6 @@
     "noImplicitAny": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/babel.config.js"],
+  "include": ["src", "./setupTest.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
